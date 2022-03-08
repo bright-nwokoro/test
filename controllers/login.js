@@ -2,7 +2,7 @@ const User = require("../models/user");
 
 const acceptUser = async (res, req) => {
     const phoneNumber = req.body.phonenumber;
-
+    // const string = encodeURIComponent(phoneNumber);
     const user = await User.findOne({
         phoneNumber: phoneNumber
     }).lean();
@@ -15,7 +15,9 @@ const acceptUser = async (res, req) => {
     }
     res.status(201);
     res.json({ status: "ok", data: "Login successfully" });
-    res.redirect(302, '/verify-otp')
+    
+    // res.redirect(302, '/?send-otp=' + string);
+    res.redirect(302, '/send_otp');
 
 }
 

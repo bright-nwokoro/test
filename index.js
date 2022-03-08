@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const signupRoute = require('./routes/signup');
 const loginRoute = require('./routes/login');
 const homeRoute = require('./routes/home');
+const sendOTPRoute = require('./routes/send-otp');
+const verifyOTPRoute = require('./routes/verify-otp');
 const bodyParser = require('body-parser')
 require("dotenv").config();
 
@@ -14,7 +16,9 @@ app.use(helmet());
 app.use(bodyParser.json());
 
 app.use('/signup', signupRoute);
-app.use('/login', loginRoute)
+app.use('/login', loginRoute);
+app.use('/send_otp', sendOTPRoute);
+app.use('/verify_otp', verifyOTPRoute);
 app.use('/', homeRoute);
 
 mongoose.connect(process.env.DB_URL).then(

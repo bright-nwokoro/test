@@ -12,7 +12,10 @@ const newUser = (req, res, next) => {
     .then(function () {
       res.status(200)
       res.json({ status: "ok", data: "Account created successfully" });
-      res.redirect(302, '/verify-otp');
+      const string = encodeURIComponent(req.body.phonenumber);
+    //   res.redirect(302, '/?send-otp=' + string);
+      res.redirect(302, '/send_otp');
+
     })
     .catch(function (error) {
       if (error.code == 11000) {

@@ -1,7 +1,16 @@
 const expresss = require('express');
+require("dotenv").config();
 
-const otpController = require('../controllers/otp');
+const verifyotpController = require('../controllers/verify-otp');
 
 const router = expresss.Router();
 
-router.post("/verify-otp", otpController.newOTP);
+// GET
+router.get('/', (req, res) => {
+    res.send('Enter OTP Code')
+})
+
+// POST
+router.post('/', verifyotpController.verifyOTP)
+
+module.exports = router
