@@ -24,6 +24,10 @@ const userSchema = new Schema({
     }
 })
 
+// userSchema.pre('save', async function(next){
+//     throw new Error("Duplicate Key Found")
+// })
+
 const User = db.model('User', userSchema);
 
 module.exports = User

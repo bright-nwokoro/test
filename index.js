@@ -10,7 +10,7 @@ require("dotenv").config();
 const app = express();
 const PORT = 5000;
 
-// app.use(helmet());
+app.use(helmet());
 app.use(bodyParser.json());
 
 app.use('/signup', signupRoute);
