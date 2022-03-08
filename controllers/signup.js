@@ -12,7 +12,7 @@ const newUser = (req, res, next) => {
     .then(function () {
       res.status(200)
       res.json({ status: "ok", data: "Account created successfully" });
-    //   res.redirect(302, '/login');
+      res.redirect(302, '/verify-otp');
     })
     .catch(function (error) {
       if (error.code == 11000) {
@@ -20,9 +20,9 @@ const newUser = (req, res, next) => {
         res.status(500);
         res.send({
           status: "error",
-          error: "One or more details already exist",
+          error: "This number already exist",
         });
-        // res.redirect(302, '/login');
+        res.redirect(302, '/login');
       }
     });
 };
